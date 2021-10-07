@@ -44,7 +44,7 @@ func parseCSV(inputPath: String, outputPath: String) {
   }
 
   try! output.write(
-    row: ["amount", "card_name", "is_foil", "set_name", "language"]
+    row: ["amount", "card_name", "is_foil", "set_name"]
   )
   
   while csv.next() != nil {
@@ -54,7 +54,6 @@ func parseCSV(inputPath: String, outputPath: String) {
         csv["Card"]!, //card_name
         "", //is_foil
         csv["Set"]!, //set_name
-        "en", //language
       ]);
     }
     if let foilCount = Int(csv["Foil Qty"]!), foilCount > 0 {
@@ -63,7 +62,6 @@ func parseCSV(inputPath: String, outputPath: String) {
         csv["Card"]!, //card_name
         "1", //is_foil
         csv["Set"]!, //set_name
-        "en", //language
       ]);
     }
   }
